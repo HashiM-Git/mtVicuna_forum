@@ -1,0 +1,66 @@
+<MTSetVars>
+	tempName=index_archive
+	page_title=Archive Index
+</MTSetVars>
+<?xml version="1.0" encoding="<$MTPublishCharset$>" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="<$MTDefaultLanguage$>" xml:lang="<$MTDefaultLanguage$>">
+<head profile="http://purl.org/net/ns/metaprof">
+<MTInclude module="<__trans phrase="HTML Header">">
+<MTIfNonEmpty tag="MTBlogDescription">  <meta name="description" content="<$MTBlogDescription encode_html="1"$>" /></MTIfNonEmpty>
+  <title><$MTGetVar name="blog_name"$> - <$MTGetVar name="page_title"$></title>
+</head>
+<body class="archives single">
+<$MTInclude module="<__trans phrase="Header">"$>
+
+  <div id="content">
+
+    <div id="main">
+<$MTInclude module="<__trans phrase="Topic Path">"$>
+<$MTInclude module="<__trans phrase="Create Entry Link">"$>
+      <h1><$MTGetVar name="page_title"$></h1>
+
+<MTTopLevelCategories>
+      <div class="section entry">
+	<$MTCategoryLabel setvar="cat"$>
+        <h2><a href="<$MTCategoryArchiveLink$>" title="<__trans phrase="Categories">:<$MTCategoryLabel$>"><$MTCategoryLabel$></a></h2>
+	<MTIf tag="CategoryCount">
+        <dl class="headline">
+		<MTEntriesWithSubCategories lastn="9999" category="$cat">
+			<$MTInclude module="<__trans phrase="Headline">"$>
+		</MTEntriesWithSubCategories>
+        </dl>
+	</MTIf>
+	<MTSubCategories>
+		<$MTCategoryLabel setvar="scat"$>
+        <div class="section">
+		<MTIf tag="CategoryCount">
+          <h3><a href="<$MTCategoryArchiveLink$>" title="<__trans phrase="Categories">:<$MTCategoryLabel$>"><$MTCategoryLabel$></a></h3>
+          <dl class="headline">
+			<MTEntriesWithSubCategories lastn="9999" category="$cat/$scat">
+				<$MTInclude module="<__trans phrase="Headline">"$>
+			</MTEntriesWithSubCategories>
+          </dl>
+		<MTElse>
+			<MTSetVarBlock name="query_string">?<$MTCategoryID$>;<$MTCategoryLabel escape="url"$></MTSetVarBlock>
+          <h3><$MTCategoryLabel$></h3>
+          <p><__trans phrase="None Topics"> <span class="create-entry"><a href="<$MTLink template="entry_create"$><$MTGetVar name="query_string"$>" title="<__trans phrase="The topic is contributed to [_1]" params="<$MTCategoryLabel$>">"><__trans phrase="Start Topic"></a></span></p>
+		</MTIf>
+        </div>
+	</MTSubCategories>
+      </div>
+<!-- end div.entry -->
+</MTTopLevelCategories>
+
+<$MTInclude module="<__trans phrase="Topic Path">"$>
+    </div>
+<!-- end div#main -->
+
+<$MTInclude module="<__trans phrase="Utilities">"$>
+<$MTInclude module="<__trans phrase="Return to page top">"$>
+  </div>
+<!-- end div#content -->
+
+<$MTInclude module="<__trans phrase="Footer">"$>
+</body>
+</html>

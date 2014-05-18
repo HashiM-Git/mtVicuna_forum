@@ -1,0 +1,54 @@
+<MTSetVars>
+	tempName=system_comment_response
+	<MTIf name="comment_confirmation">
+		page_title=Confirmation
+		message=<p><__trans phrase="Your comment has been submitted!"></p>
+	<MTElse name="comment_pending">
+		page_title=Pending
+		message=<p><__trans phrase="Your comment has been received and held for approval by the blog owner."></p>
+	<MTElse name="comment_error">
+		page_title=Error
+		message=<p><__trans phrase="Your comment submission failed for the following reasons:"></p><p><$MTErrorMessage encode_html="1"$></p>
+	</MTIf>
+</MTSetVars>
+<?xml version="1.0" encoding="<$MTPublishCharset$>" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="<$MTDefaultLanguage$>" xml:lang="<$MTDefaultLanguage$>">
+<head profile="http://purl.org/net/ns/metaprof">
+<MTInclude module="<__trans phrase="HTML Header">">
+<MTIfNonEmpty tag="MTBlogDescription">
+  <meta name="description" content="<$MTBlogDescription encode_html="1"$>" /></MTIfNonEmpty>
+  <title><$MTGetVar name="blog_name"$> - <$MTGetVar name="page_title"$></title>
+</head>
+<body class="mainIndex single">
+<$MTInclude module="<__trans phrase="Header">"$>
+
+  <div id="content">
+
+    <div id="main">
+<$MTInclude module="<__trans phrase="Topic Path">"$>
+      <h1><$MTGetVar name="page_title"$></h1>
+
+      <div class="entry">
+        <ul class="info">
+          <li class="author">Name: <$MTCommentPreviewAuthorLink spam_protect="1"$></li>
+          <li class="date"><$MTCommentDate$></li>
+        </ul>
+
+        <div class="textBody">
+<$MTGetVar name="message"$>
+          <p><a href="<MTIf name="comment_error">javascript:history.back()<MTElse><$MTEntryPermaLink$></MTIf>">Back</a></p>
+        </div>
+
+      </div>
+
+<$MTInclude module="<__trans phrase="Topic Path">"$>
+    </div>
+<!-- end div#main -->
+
+  </div>
+<!-- end div#content -->
+
+<$MTInclude module="<__trans phrase="Footer">"$>
+</body>
+</html>

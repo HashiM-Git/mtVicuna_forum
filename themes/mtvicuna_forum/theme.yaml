@@ -1,0 +1,254 @@
+label: mt.Vicuna Forum Theme
+id: mtvicuna_forum
+author_name: HashiM
+author_link: http://kita2.net/
+doc_link: http://kita2.net/bbs/theme/
+version: 1.0b
+class: blog
+description: <__trans phrase="A MT5 Forum Theme for Vicuna CMS.">
+l10n_lexicon:
+  ja: l10n_ja.yaml
+thumbnail_file: vicunaforum.png
+thumbnail_file_medium: vicunaforum-medium.png
+thumbnail_file_small: vicunaforum-small.png
+elements:
+  blog_static_files:
+    component: core
+    importer: blog_static_files
+    require: 1
+    data:
+      - css
+  template_set:
+    component: core
+    importer: template_set
+    name: template set
+    require: 1
+    data:
+      label: mt.Vicuna Forum
+      base_path: templates
+      require: 1
+      base_css: 0
+      archive_type_preferred: Individual
+      days_on_index: 0
+#      file_extension: php
+#      include_system: php
+#      include_cache: 1
+      allow_pings_default: 0
+      stylecatcher_libraries:
+        mtvicuna_skin:
+          url: '{{support}}theme_static/mtvicuna_forum/'
+          label: mt.Vicuna skin
+          description_label: Styles that are compatible with the mt.Vicuna Theme.
+#        mtvicuna_recent_skin:
+#          url: 'http://code.zelazny.mydns.jp/themes/mtVicuna-recent-24/'
+#          label: mt.Vicuna Recent skin
+#          description_label: 'Recent Vicuna Styles of the mt.Vicuna Theme.'
+        mtvicuna_legacy_skin:
+          url: 'http://code.zelazny.mydns.jp/themes/mtvicuna-legacy/'
+          label: mt.Vicuna Legacy skin
+          description_label: Legacy Vicuna Styles covert to Recent version of the mt.Vicuna Theme.
+        hashim_skin:
+          url: 'http://kita2.net/stylelib/'
+          label: mt.Vicuna HashiM Stylelib
+          description_label: This is style library only for the mt.Vicuna theme.
+      templates:
+        index:
+          styles:
+            label: Stylesheet
+            outfile: css/styles.css
+            rebuild_me: 1
+          atom:
+            label: Atom
+            outfile: atom.xml
+            rebuild_me: 1
+          rss:
+            label: RSS
+            outfile: rss.xml
+            rebuild_me: 1
+          rsd:
+            label: RSD
+            outfile: rsd.xml
+            rebuild_me: 1
+          entry_create:
+            label: Create Entry
+            outfile: start-topic.html
+            rebuild_me: 1
+          members:
+            label: Member List
+            outfile: members.html
+            rebuild_me: 1
+          signin:
+            label: SignIn
+            outfile: signin.js
+            rebuild_me: 1
+          javascript:
+            label: JavaScript
+            outfile: mt.js
+            rebuild_me: 1
+          archive_index:
+            label: Archive Index
+            outfile: archives.html
+            rebuild_me: 1
+          main_index:
+            label: Main Index
+            outfile: index.html
+            rebuild_me: 1
+        individual:
+          entry:
+            label: Entry
+            filename: archive/entry.mtml
+            mappings:
+              entry_archive:
+                archive_type: Individual
+                file_template: %-c/%e%x
+        archive:
+          entry_listing_category:
+            label: Entry Listing Category
+            filename: archive/entry_listing_category.mtml
+            mappings:
+              category:
+                archive_type: Category
+                file_template: %-c/%i
+          entry_feed:
+            label: Entry Feed
+            filename: archive/entry_feed.mtml
+            mappings:
+              category:
+                archive_type: Category
+                preferred: 0
+                file_template: %-c/atom.xml
+        page:
+          page:
+            label: Page
+            filename: archive/page.mtml
+            mappings:
+              page_archive:
+                archive_type: Page
+                file_template: %-c/%-f
+        module:
+          header:
+            label: Header
+            filename: module/header.mtml
+          global_navigation:
+            label: Global Navigation
+            filename: module/global_navigation.mtml
+          footer:
+            label: Footer
+            filename: module/footer.mtml
+          utilities:
+            label: Utilities
+            filename: module/utilities.mtml
+          comments:
+            label: Comments
+            filename: module/comments.mtml
+          comment_detail:
+            label: Comment Detail
+            filename: module/comment_detail.mtml
+          headline:
+            label: Headline
+            filename: module/headline.mtml
+          html_header:
+            label: HTML Header
+            filename: module/html_header.mtml
+          topic_path:
+            label: Topic Path
+            filename: module/topic_path.mtml
+          entry_detail:
+            label: Entry Detail
+            filename: module/entry_detail.mtml
+          entry_metadata:
+            label: Entry Metadata
+            filename: module/entry_metadata.mtml
+          entry_summary:
+            label: Entry Summary
+            filename: module/entry_summary.mtml
+          entry_summary_feedbacks:
+            label: Entry Summary Feedbacks
+            filename: module/entry_summary_feedbacks.mtml
+          profile_image:
+            label: Userpic
+            filename: module/profile_image.mtml
+          archive_index_link:
+            label: Archive Index Link
+            filename: module/archive_index_link.mtml
+          return:
+            label: Return to page top
+            filename: module/return.mtml
+          entry_create_link:
+            label: Create Entry Link
+            filename: module/entry_create_link.mtml
+          edit_formfield:
+            label: Form Field
+            filename: module/edit_formfield.mtml
+        system:
+          profile_view:
+            label: Profile View
+            filename: system/profile_view.mtml
+          comment_preview:
+            label: Comment Preview
+            filename: system/comment_preview.mtml
+          search_results:
+            label: Search Results
+            filename: system/search_results.mtml
+          entry_response:
+            label: Entry Response
+            filename: system/entry_response.mtml
+          popup_image:
+            label: Popup Image
+            filename: system/popup_image.mtml
+          comment_response:
+            label: Comment Response
+            filename: system/comment_response.mtml
+          dynamic_error:
+            label: Dynamic Error
+            filename: system/dynamic_error.mtml
+        widgetset:
+          Navigation Utilities:
+            label: Navigation Utilities
+            order: 1000
+            widgets:
+              - Sign in
+              - Members
+              - Recent Comments
+          Other Utilities:
+            label: Other Utilities
+            order: 1000
+            widgets:
+              - Category Archive List
+              - Search
+              - Feed
+              - OpenID
+        widget:
+          u_signin:
+            label: Sign in
+            filename: widget/u_signin.mtml
+          u_about:
+            label: About
+            filename: widget/u_about.mtml
+          u_members:
+            label: Members
+            filename: widget/u_members.mtml
+          u_recent_entries:
+            label: Recent Entries
+            filename: widget/u_recent_entries.mtml
+          u_recent_comments:
+            label: Recent Comments
+            filename: widget/u_recent_comments.mtml
+          u_category_archive_list:
+            label: Category Archive List
+            filename: widget/u_category_archive_list.mtml
+          u_search:
+            label: Search
+            filename: widget/u_search.mtml
+          u_openid:
+            label: OpenID
+            filename: widget/u_openid.mtml
+          u_feed:
+            label: Feed
+            filename: widget/u_feed.mtml
+          u_links:
+            label: Links
+            filename: widget/u_links.mtml
+          u_creative_commons:
+            label: Creative Commons
+            filename: widget/u_creative_commons.mtml

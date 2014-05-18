@@ -1,0 +1,47 @@
+<MTSetVars>
+	tempName=index_member
+	page_title=<__trans phrase="Member List">
+</MTSetVars>
+<?xml version="1.0" encoding="<$MTPublishCharset$>" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="<$MTDefaultLanguage$>" xml:lang="<$MTDefaultLanguage$>">
+<head profile="http://purl.org/net/ns/metaprof">
+<MTInclude module="<__trans phrase="HTML Header">">
+<MTIfNonEmpty tag="MTBlogDescription">  <meta name="description" content="<$MTBlogDescription encode_html="1"$>" /></MTIfNonEmpty>
+  <title><$MTGetVar name="blog_name"$> - <$MTGetVar name="page_title"$></title>
+</head>
+<body class="archives member double">
+<$MTInclude module="<__trans phrase="Header">"$>
+
+  <div id="content">
+
+    <div id="main">
+<$MTInclude module="<__trans phrase="Topic Path">"$>
+      <h1><$MTGetVar name="page_title"$></h1>
+
+      <div class="member entry">
+        <ul class="list">
+<MTAuthors lastn="999" need_entry="0" roles="<__trans phrase="Blog Administrator">, <__trans phrase="Contributor">" sort_by="created_on">
+          <li class="<MTIf name="__odd__">odd<MTElse>even</MTIf>">
+            <dl class="member-info">
+              <dt><$MTAuthorDisplayName$></dt>
+              <dd><MTIf tag="AuthorURL"><a href="<$MTAuthorURL$>" title="<$MTAuthorURL$>"><$MTAuthorURL trim_to="18+..."$></a><MTElse>No WebSite</MTIf></dd>
+            </dl>
+            <p class="member-pic"><$MTInclude module="<__trans phrase="Userpic">" userpic_type="userlist" userpic_size="50"$></p>
+          </li>
+</MTAuthors>
+        </ul>
+      </div>
+
+<$MTInclude module="<__trans phrase="Topic Path">"$>
+    </div>
+<!-- end div#main -->
+
+<$MTInclude module="<__trans phrase="Utilities">"$>
+<$MTInclude module="<__trans phrase="Return to page top">"$>
+  </div>
+<!-- end div#content -->
+
+<$MTInclude module="<__trans phrase="Footer">"$>
+</body>
+</html>

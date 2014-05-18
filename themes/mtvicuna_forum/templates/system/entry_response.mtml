@@ -1,0 +1,49 @@
+<MTSetVars>
+	tempName=system_topicWrite
+	<MTIf name="entry_status" eq="1">
+		page_title=<__trans phrase="Topic Pending">
+		message=<p><__trans phrase="The topic you posted has been received and held for approval by the forum administrators."></p>
+	<MTElse>
+		<MTIf name="entry_status" eq="2">
+			page_title=<__trans phrase="Topic Posted">
+			message=<p><__trans phrase="The topic you posted has been received and published. Thank you for your submission."></p>
+		<MTElse>
+			page_title=<__trans phrase="Topic Pending">
+			message=<p><__trans phrase="The topic you posted has been received and held for approval by the forum administrators."></p>
+		</MTIf>
+	</MTIf>
+</MTSetVars>
+<?xml version="1.0" encoding="<$MTPublishCharset$>" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="<$MTDefaultLanguage$>" xml:lang="<$MTDefaultLanguage$>">
+<head profile="http://purl.org/net/ns/metaprof">
+<MTInclude module="<__trans phrase="HTML Header">">
+<MTIfCommentsAccepted>
+  <script type="text/javascript" src="<$MTLink template="javascript"$>"></script>
+</MTIfCommentsAccepted>
+  <title><$MTGetVar name="blog_name"$> - <$MTGetVar name="page_title"$></title>
+</head>
+<body class="individual system single" onload="mtEntryOnLoad()" onunload="mtEntryOnUnload()">
+<$MTInclude module="<__trans phrase="Header">"$>
+
+  <div id="content">
+
+    <div id="main">
+<$MTInclude module="<__trans phrase="Topic Path">"$>
+      <h1><$MTGetVar name="page_title"$></h1>
+
+      <div class="entry">
+<$MTGetVar name="message"$>
+      </div>
+
+<$MTInclude module="<__trans phrase="Topic Path">"$>
+    </div>
+<!-- end div#main -->
+
+    <p><__trans phrase="Return to the <a href="[_1]">forum's homepage</a>." params="<$MTBlogURL$>"></p>
+  </div>
+<!-- end div#content -->
+
+<$MTInclude module="<__trans phrase="Footer">"$>
+</body>
+</html>

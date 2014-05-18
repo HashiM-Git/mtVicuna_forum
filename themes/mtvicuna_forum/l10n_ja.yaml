@@ -1,0 +1,155 @@
+Vicuna Credit: <a href="http://mt.vicuna.jp/" title="ver.2.3">Movable Type Template</a>(<a href="http://kita2.net/bbs/theme/" title="ver.1.0β">Forum</a>)
+A MT5 Forum Theme for Vicuna CMS.: VICUNA CMSのMT5(コミュニティ掲示板)用テーマ
+mt.Vicuna skin: mt.Vicunaスキン
+Styles that are compatible with the mt.Vicuna Theme.: mt.Vicunaテーマに適用するスキンです。
+mt.Vicuna Legacy skin: mt.Vicunaレガシー・スキン
+Legacy Vicuna Styles covert to Recent version of the mt.Vicuna Theme.: Vicunaの旧バージョン用スキンを、新しいmt.Vicunaテーマで利用可能にした物です。
+mt.Vicuna HashiM Stylelib: HashiM スタイルライブラリー for mt.Vicuna
+This is style library only for the mt.Vicuna theme.: HashiMによる、mt.Vicunaテーマ専用スタイルライブラリです。
+Member List: メンバー一覧
+Entry: ブログ記事(個別エントリー)
+Entry Listing Category: ブログ記事リスト(カテゴリー)
+Entry Feed: ブログ記事のフィード
+Create Entry: 新しいブログ記事を作成
+Header: ヘッダー
+Footer: フッター
+Archive Index Link: アーカイブページへのリンク
+Comments: コメント
+Comment Detail: コメント詳細
+Profile View: プロフィール
+Form Field: フォームフィールド
+Utilities: ユーティリティ
+Create Entry Link: 新しいブログ記事を作成へのリンク
+Entry Metadata: エントリーメタデータ
+Entry Detail: エントリー詳細
+Entry Summary: エントリー概要
+Entry Summary Feedbacks: リアクションリンク
+Global Navigation: グローバルナビゲーション
+Headline: ヘッドライン
+Return to page top: ページ上部へ戻る
+Page Detail: ウェブページ詳細
+Topic Path: パンくずリスト
+HTML Header: 共通Head内要素
+Navigation Utilities: サイドバー(ナビゲーション)
+Other Utilities: サイドバー(その他)
+Members: メンバーリスト
+Category Archive List: カテゴリーリスト
+Links: リンク集
+Recent Comments: 最近届いたコメント
+Feed: フィード購読リンク
+The web page that adheres the @globalNavi tag is automatically added to the item.: @globalNavi タグの付いたウェブページを自動的に項目に追加します。
+You can use some <abbr title="Hyper Text Markup Language">HTML</abbr> tags for decorating.: スタイル指定用の一部の <abbr title="Hyper Text Markup Language">HTML</abbr>タグが使用できます。
+You cannot use <abbr title="Hyper Text Markup Language">HTML</abbr> tags.: <abbr title="Hyper Text Markup Language">HTML</abbr>タグは使用できません。
+Extended: 続きを読む
+You did not enter anything to search for. Please try again: 検索キーワードが入力されていません。
+Your search - <em><$MTSearchString$></em> -- did not match any documents.: <em><$MTSearchString$></em> というキーワードを含む記事は見つかりませんでした。
+Make sure all words are spelled correctly.: キーワードに誤字や脱字がありませんか？
+Try different keywords.: キーワードの意味はそのままで、表現や言い回しを変えてみてください。
+Try more general keywords.: 専門的なキーワードだったり、長い文字列のキーワードだったりした場合は、より一般的で短いキーワードにしてください。
+Try decreasing the number of keywords.: キーワードを複数指定している場合は、キーワードの数を減らしてみてください。
+Character Case: 大文字・小文字を区別する
+Regex Search: 正規表現を使用する
+Body text: 本文内検索
+Both: 両方
+Preview of reply of reply origin: 上記コメントに対する返信のプレビュー
+
+Entry Response: 投稿完了
+Archives: アーカイブ
+Reply Submitted: 返信完了
+Your reply has been accepted.: 返信を受信しました。
+Thank you for replying.: 返信ありがとうございます。
+Your reply has been received and held for approval by the forum administrator.: 返信は掲示板の管理者が公開するまで保留されています。
+Reply Submission Error: 返信エラー
+Thanks for signing in,: サインインありがとうございます。
+. Now you can reply to this topic.: さん、返信をどうぞ。
+You do not have permission to comment on this blog.: このブログに投稿する権限がありません。
+Edit profile: ユーザー情報の編集
+to reply to this topic.: してから返信してください。
+to reply to this topic,: してから返信してください。
+Forum Groups: カテゴリグループ
+Sub Forum Groups: サブカテゴリ一覧
+1 Reply: 返信(1)
+\# Replies: 返信(#)
+No Replies: 返信(0)
+Add a Reply: 返信する
+Recent Topics: 最新トピック
+Replies: 返信
+Not Replies: 返信不可
+Last Reply: 最新の返信
+Vote: 票
+Votes: 票
+Permalink to this Reply: この返信のURL
+Closed: 終了
+Post the first topic in this forum.: 掲示板にトピックを投稿してください。
+Topics: トピック
+Topic: トピック
+Title: トピックのタイトル
+Thank you for posting a new topic to the forums.: 掲示板に新しいトピックを投稿しました。
+Topic Pending: トピック保留中
+The topic you posted has been received and held for approval by the forum administrators.: 投稿は掲示板の管理者が公開するまで保留されています。
+Topic Posted: トピック投稿完了
+The topic you posted has been received and published. Thank you for your submission.: トピックが公開されました。投稿ありがとうございました。
+Start Topic: トピックを投稿
+None Topics: 投稿はありません。
+Home: ホーム
+Forum Home: 掲示板メイン
+Start a Topic: トピックの投稿
+In order to create an entry on this blog you must first register.: トピックに投稿するには、Movable Typeにユーザー登録してください。
+You don\'t have permission to post.: 投稿する権限がありません。
+Sign in to create an entry.: サインインしてトピックを投稿してください。
+Start Topic Form: トピック投稿Form
+Topic Reply Form: 返信用のForm
+Select Category...: 掲示板を選択...
+Forum: 掲示板
+All Forums: すべての掲示板
+Member: メンバー
+
+# mod_ent_sum_feed / mod_headline / sys_com_prev / sys_ser_res
+Reply to [_1]: トピック：[_1]への返信
+# signin
+You are signed in as <a href="[_1]">[_2]</a>: <a href="[_1]">[_2]</a>
+You are signed in as [_1]: <span class="user_name">[_1]</span>
+Not a member? <a href="[_1]">Register</a>: <a href="[_1]">登録</a>
+# archive_index / ent_lis_cat
+The topic is contributed to [_1]: カテゴリ：[_1]にトピックを投稿する
+# mod_com_det
+replied to <a href="[_1]" title="[_2]">[_3]</a>: から<a href="[_1]" title="[_2]">[_3]の返信</a>への返信
+# sys_ent_res
+Return to the <a href="[_1]">forum\'s homepage</a>.: <a href="[_1]">掲示板</a>に戻る
+## 権限の関係(コミュニティ以外は基本ローカライズで設定済)
+Website Administrator: ウェブサイト管理者
+Blog Administrator: ブログ管理者
+Editor: 編集者
+Designer: デザイナ
+Webmaster: ウェブマスター
+Author: ユーザー
+Contributor: ライター
+Moderator: モデレータ
+Commenter: コメント投稿者
+## 独自権限
+Community: コミュニティ
+
+## profile_view
+Profile of <$MTAuthorDisplayName encode_html="1"$>: <$MTAuthorDisplayName encode_html="1"$> のプロフィール
+Following Users: 注目しているユーザー
+Being Followed: 注目されているユーザー
+User Profile: ユーザーのプロフィール
+Recent Actions from [_1]: 最近の[_1]のアクション
+Recent Entries from [_1]: 最近の[_1]のブログ記事
+Responses to Comments from <$MTAuthorDisplayName encode_html="1"$>: <$MTAuthorDisplayName encode_html="1"$>のコメントへの返信
+You are following <$MTAuthorDisplayName encode_html="1"$>.: <$MTAuthorDisplayName encode_html="1"$>に注目しています。
+Unfollow: 注目をやめる
+Follow: 注目する
+You are followed by <$MTAuthorDisplayName encode_html="1"$>.: <$MTAuthorDisplayName encode_html="1"$>に注目されています。
+You are not followed by <$MTAuthorDisplayName encode_html="1"$>.: <$MTAuthorDisplayName encode_html="1"$>は注目していません。
+Website: ウェブサイト
+Recent Actions: 最近のアクション
+Comment Threads: コメントスレッド
+Favorited [_1] on <a href="<$MTEntryBlogURL$>" class="icon-blog">[_2]</a>: <a href="<$MTEntryBlogURL$>" class="icon-blog">[_2]</a>の[_1]をお気に入りに追加しました。
+No recent actions.: 最近アクションはありません
+commented on: のコメント
+No responses to comments.: コメントへの返信がありません。
+Not following anyone: まだ誰にも注目していません。
+Not being followed: まだ注目されていないようです。
+Following: 注目
+Followers: 被注目

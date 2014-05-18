@@ -1,0 +1,44 @@
+<MTSetVars>
+	tempName=system_comment_preview
+	page_title=<__trans phrase="Reply to [_1]" params="<$MTEntryTitle$>">
+</MTSetVars>
+<?xml version="1.0" encoding="<$MTPublishCharset$>" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="<$MTDefaultLanguage$>" xml:lang="<$MTDefaultLanguage$>">
+<head profile="http://purl.org/net/ns/metaprof">
+<MTInclude module="<__trans phrase="HTML Header">">
+  <MTIfCommentsAccepted><script type="text/javascript" src="<$MTLink template="javascript"$>"></script></MTIfCommentsAccepted>
+  <title><$MTGetVar name="blog_name"$> - <$MTGetVar name="page_title"$></title>
+<script type="text/javascript">
+	/* <![CDATA[ */
+	var user = <$MTUserSessionState$>;
+	var is_preview = true;
+	/* ]]> */
+</script> 
+</head>
+<body class="individual system single" onload="mtEntryOnLoad()" onunload="mtEntryOnUnload()">
+<$MTInclude module="<__trans phrase="Header">"$>
+
+  <div id="content">
+
+    <div id="main">
+<$MTInclude module="<__trans phrase="Topic Path">"$>
+      <h1><$MTGetVar name="page_title"$></h1>
+      <div class="entry">
+        <ul class="info">
+          <li class="author">Name: <$MTCommentPreviewAuthorLink spam_protect="1"$></li>
+          <li class="date"><$MTCommentPreviewDate$></li>
+        </ul>
+<$MTInclude module="<__trans phrase="Comments">"$>
+      </div>
+
+<$MTInclude module="<__trans phrase="Topic Path">"$>
+    </div>
+<!-- end div#main -->
+
+<$MTInclude module="<__trans phrase="Return to page top">"$>
+  </div>
+<!-- end div#content -->
+	<$MTInclude module="<__trans phrase="Footer">"$>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<dt><a href="<$MTEntryPermalink$>"><$MTEntryTitle$></a>
+  <span class="date"> - Posted date: <$MTEntryDate$></span>
+</dt>
+<dd>
+  <ul>
+    <li>Posted by: <$MTInclude module="<__trans phrase="Userpic">" userpic_size="36"$>
+ <a href="<$MTGetVar name="profile_view_url"$><$MTEntryAuthorID$>"><$MTEntryAuthorDisplayName encode_html="1"$></a>
+    </li>
+    <li id="scoring-id-<$MTEntryID$>"><a href="javascript:void(0)" onclick="return mtScore(<$MTEntryID$>)" class="scoring">
+ <span id="scoring-vote-<$MTEntryID$>" class="scoring-vote"><__trans phrase="Vote"></span>
+ <span id="scoring-score-<$MTEntryID$>" class="scoring-score"><$MTEntryScore namespace="community_pack_recommend" singular="1" plural="#" none="0"$></span>
+ <span id="scoring-score-label-<$MTEntryID$>" class="scoring-score-label"><$MTEntryScore namespace="community_pack_recommend" singular="<__trans phrase="Vote">" plural="<__trans phrase="Vote">" none="<__trans phrase="Vote">"$></span></a>
+    </li>
+    <li><a href="<$MTEntryPermalink$>#comments" title="<__trans phrase="Reply to [_1]" params='<$MTEntryTitle encode_html="1"$>'>" rel="nofollow"><__trans phrase="Replies"></a>: <$MTEntryCommentCount$></li>
+  </ul>
+<MTComments sort_order="descend" lastn="1">
+  <dl>
+    <dt><span class="date">RES date: <a href="<$MTEntryPermalink$>#comment-<$MTCommentID$>" title="<__trans phrase="Permalink to this Reply">"><$MTCommentDate$></a></span></dt>
+    <dd><ul>
+      <li>RES by: <$MTInclude module="<__trans phrase="Userpic">" userpic_size="36" userpic_type="commenter"$>
+	<MTIfCommenterIsAuthor>
+ <a href="<$MTGetVar name="profile_view_url"$><$MTCommenterID$>"><$MTCommenterName encode_html="1"$></a>
+	<MTElse>
+		<$MTCommentAuthorLink$>
+	</MTIfCommenterIsAuthor>
+      </li>
+    </ul></dd>
+  </dl>
+</MTComments>
+</dd>

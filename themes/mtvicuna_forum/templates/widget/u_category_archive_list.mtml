@@ -1,0 +1,31 @@
+<dt>Categories</dt>
+<dd class="categoryArchives">
+<MTTopLevelCategories>
+	<MTSubCatIsFirst>
+  <ul class="category">
+	</MTSubCatIsFirst>
+	<MTHasNoParentCategory>
+		<MTIfNonZero tag="MTCategoryCount">
+    <li class="topLevel"><a href="<$MTCategoryArchiveLink$>" title="<__trans phrase="Categories">:<$MTCategoryLabel$>"><$MTCategoryLabel$></a> <span class="icon-entry"><$MTCategoryCount$></span>
+		<MTElse>
+    <li class="topLevel"><$MTCategoryLabel$>
+		</MTIfNonZero>
+	</MTHasNoParentCategory>
+	<MTHasParentCategory>
+		<MTSetVarBlock name="query_string">?<$MTCategoryID$>;<$MTCategoryLabel escape="url"$></MTSetVarBlock>
+		<MTIfNonZero tag="MTCategoryCount">
+			<$MTCategoryCount setvar="limit"$>
+			<$MTSetVar name="cct" value="0"$><MTEntries limit="$limit"><$MTEntryCommentCount setvar="ct"$><$MTSetVar name="cct" op="+" value="$ct"$></MTEntries>
+    <li><a href="<$MTCategoryArchiveLink$>" title="<__trans phrase="Categories">:<$MTCategoryLabel$>"><$MTCategoryLabel$></a> <span class="icon-entry"><$MTCategoryCount$></span><MTIf name="cct"> <span class="icon-comment"><$MTGetVar name="cct"$></span></MTIf>
+		<MTElse>
+    <li class="create-entry"><a href="<$MTLink template="<__trans phrase="Create Entry">"$><$MTGetVar name="query_string"$>" title="<__trans phrase="The topic is contributed to [_1]" params="<$MTCategoryLabel$>">"><$MTCategoryLabel$></a>
+		</MTIfNonZero>
+	</MTHasParentCategory>
+	<$MTSubCatsRecurse$>
+    </li>
+	<MTSubCatIsLast>
+  </ul>
+	</MTSubCatIsLast>
+</MTTopLevelCategories>
+  <p><a href="<$MTLink template="<__trans phrase="Archive Index">"$>">All Categories</a></p>
+</dd>

@@ -1,0 +1,40 @@
+@charset "UTF-8";
+/*
+
+name: Style-Vega
+designer: wu
+designer_url: http://3ping.org/
+developer: wu
+developer_url: http://3ping.org/
+layouts: single, double, double-l, multi, multi2, multi2-l
+*/
+
+@import url(core.css);
+@import url(layouts.css);
+
+.img_L {
+	margin-right: 2%!important;
+	margin-top: 2%!important;
+	float: left;
+}
+
+.img_R {
+	margin-left: 2%!important;
+	margin-top: 2%!important;
+	float: right;
+}
+
+.clear {
+	clear: both;
+}
+/*--------
+	Font size setting
+---------*/
+
+body {
+	font-size: 100%;
+}
+
+div#main {
+	font-size: 100%;
+}

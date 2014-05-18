@@ -1,0 +1,23 @@
+<dt<MTIfArchiveTypeEnabled archive_type="Individual"> id="comment-<$MTCommentID$>"</MTIfArchiveTypeEnabled>>
+<$MTInclude module="<__trans phrase="Userpic">" userpic_size="50" userpic_type="commenter"$>
+<MTSetVarBlock name="comment_author_link"><span class="name">
+	<MTIfCommenterIsAuthor>
+ <a href="<$MTGetVar name="profile_view_url"$><$MTCommenterID$>"><$MTCommenterName$></a>
+	<MTElse>
+		<$MTCommentAuthorLink$>
+	</MTIfCommenterIsAuthor>
+	<$MTCommentAuthorIdentity$>
+</span></MTSetVarBlock>
+
+<$MTGetVar name="comment_author_link"$>
+<MTIfCommentParent><MTCommentParent>
+	<__trans phrase='replied to <a href="[_1]" title="[_2]">[_3]</a>' params='<$MTCommentLink$>%%<$MTCommentAuthor$>:<$MTCommentBody words="20"$>%%<$MTCommentAuthor$>'>
+</MTCommentParent></MTIfCommentParent>
+ <span class="separetor">|</span> <span class="date">RES date: <$MTCommentDate$></span>
+<MTIfCommentsAccepted>
+ <span class="separator">|</span> <$MTCommentReplyToLink text="Reply"$>
+</MTIfCommentsAccepted>
+</dt>
+<dd class="comment-content">
+<$MTCommentBody$>
+</dd>

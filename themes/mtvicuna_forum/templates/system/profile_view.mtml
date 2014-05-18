@@ -1,0 +1,207 @@
+<MTSetVars>
+	tempName=member_profile
+	page_title=<__trans phrase="Profile of <$MTAuthorDisplayName encode_html="1"$>">
+	hide_signout_link=1
+</MTSetVars>
+<?xml version="1.0" encoding="<$MTPublishCharset$>" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="<$MTDefaultLanguage$>" xml:lang="<$MTDefaultLanguage$>">
+<head profile="http://purl.org/net/ns/metaprof">
+<MTInclude module="<__trans phrase="HTML Header">">
+<MTIfNonEmpty tag="MTBlogDescription">
+  <meta name="description" content="<$MTBlogDescription encode_html="1"$>" />
+</MTIfNonEmpty>
+  <title><$MTGetVar name="blog_name"$> - <$MTGetVar name="page_title"$></title>
+  <link type="application/atom+xml" rel="alternate" title="<__trans phrase="Recent Actions from [_1]" params='<$MTAuthorDisplayName encode_html="1"$>'>" href="<$MTCGIPath$><$MTCommunityScript$>?__mode=feed&amp;_type=actions&amp;blog_id=<$MTBlogID$>&amp;id=<$MTAuthorID$>" />
+  <link type="application/atom+xml" rel="alternate" title="<__trans phrase="Recent Entries from [_1]" params='<$MTAuthorDisplayName encode_html="1"$>'>" href="<$MTCGIPath$><$MTCommunityScript$>?__mode=feed&amp;_type=posts&amp;blog_id=<$MTBlogID$>&amp;id=<$MTAuthorID$>" />
+  <link type="application/atom+xml" rel="alternate" title="<__trans phrase="Comments from [_1]" params='<$MTAuthorDisplayName encode_html="1"$>'>" href="<$MTCGIPath$><$MTCommunityScript$>?__mode=feed&amp;_type=comments&amp;blog_id=<$MTBlogID$>&amp;id=<$MTAuthorID$>" />
+  <link type="application/atom+xml" rel="alternate" title="<__trans phrase="Responses to Comments from <$MTAuthorDisplayName encode_html="1"$>">" href="<$MTCGIPath$><$MTCommunityScript$>?__mode=feed&amp;_type=replies&amp;blog_id=<$MTBlogID$>&amp;id=<$MTAuthorID$>" />
+<script type="text/javascript">
+<!--
+function relations(following, followed, u) {
+    mtSetUser(u);
+    if ( u && u.name )
+        conditional_block(<MTIf name="profile_self">true<MTElse>false</MTIf>, 'edit_profile');
+<MTIf name="profile_self">
+    var a = document.getElementById('edit_profile_link');
+    a.href = '<$MTCGIPath$><$MTCommunityScript$>?__mode=edit&amp;blog_id=<$MTBlogID$>&amp;return_to=' + encodeURIComponent(document.URL);
+</MTIf>
+    conditional_block(followed, 'followed_<$MTAuthorID$>');
+    conditional_block(following, 'following_<$MTAuthorID$>');
+}
+//-->
+</script>
+</head>
+<body class="profile archives double">
+<$MTInclude module="<__trans phrase="Header">"$>
+  <div id="content">
+
+    <div id="main">
+<$MTInclude module="<__trans phrase="Topic Path">"$>
+      <h1><$MTInclude module="<__trans phrase="Userpic">" userpic_type="profile" userpic_size="90"$><$MTGetVar name="page_title"$></h1>
+
+<MTIfLoggedIn element_id="edit_profile">
+        <p><a id="edit_profile_link" href="#"><__trans phrase="Edit Profile"></a></p>
+<MTElse>
+        <p class="edit-relation">
+          <span id="following-status"></span>
+	<MTAuthorIfFollowing script="0">
+		<__trans phrase="You are following <$MTAuthorDisplayName encode_html="1"$>."><$MTAuthorUnfollowLink text="<__trans phrase="Unfollow">"$>
+	<MTElse>
+		<$MTAuthorFollowLink text="<__trans phrase="Follow">"$>
+	</MTAuthorIfFollowing>
+        </p>
+	<MTIgnore>
+		<MTAuthorIfFollowed script="0">
+        <p><__trans phrase="You are followed by <$MTAuthorDisplayName encode_html="1"$>."></p>
+		<MTElse>
+        <p><__trans phrase="You are not followed by <$MTAuthorDisplayName encode_html="1"$>."></p>
+		</MTAuthorIfFollowed>
+	</MTIgnore>
+
+	<MTSetVarBlock name="html_body_footer" append="1"><script type="text/javascript" src="<$MTCGIPath$><$MTCommunityScript$>?__mode=relations_js&amp;author_id=<$MTAuthorID$><MTIf name="blog_id">&amp;blog_id=<$MTGetVar name="blog_id"$></MTIf>"></script></MTSetVarBlock>
+</MTIfLoggedIn>
+
+      <div class="entry">
+        <ul class="info">
+          <MTIf tag="AuthorURL"><li><em><a href="<$MTAuthorURL encode_html="1"$>" title="<$MTAuthorURL encode_html="1"$>">WebSite</a></em></li></MTIf>
+          <li><a href="#profile-recent-actions" onclick="switchTabs('tabs',this)" title="<__trans phrase="Recent Actions">"><__trans phrase="Actions"></a></li>
+          <li><a href="#profile-comment-threads" onclick="switchTabs('tabs',this)" title="<__trans phrase="Comment Threads">"><__trans phrase="Comments"></a></li>
+<MTLoop name="field_loop">
+	<MTIf name="type" eq="datetime">
+			          <MTIf name="value"><li><strong><$MTGetVar name="name" escape="html"$></strong> : <$MTGetVar name="field_value"$></li></MTIf>
+	<MTElse>
+			          <MTIf name="value"><li><strong><$MTGetVar name="name" escape="html"$></strong> : <$MTGetVar name="field_value" sanitize="1"$></li></MTIf>
+	</MTIf>
+</MTLoop>
+          <li><img src="<$MTStaticWebPath$>images/status_icons/feed.gif" alt="<__trans phrase="Subscribe to feed">" /> <a href="<$MTCGIPath$><$MTCommunityScript$>?__mode=feed&amp;_type=replies&amp;blog_id=<$MTBlogID$>&amp;id=<$MTAuthorID$>"><__trans phrase="Recent Actions from [_1]" params='<$MTAuthorDisplayName encode_html="1"$>'></a></li>
+        </ul>
+
+        <div id="profile-recent-actions" class="section">
+          <h2 class="tab_content_label"><__trans phrase="Recent Actions"></h2>
+<MTActions namespace="community_pack_recommend" include_blogs="all" sort_order="descend" lastn="30">
+	<MTActionsHeader>
+          <dl class="headline">
+	</MTActionsHeader>
+	<MTActionsEntry>
+            <dt class="entry icon-entry"> <a href="<$MTEntryPermaLink$>"><$MTEntryTitle encode_html="1"$></a></dt>
+            <dd><ul>
+              <li class="textBody"><$MTEntryExcerpt$></li>
+              <li>Writed at: <a href="<$MTEntryBlogURL$>"><$MTEntryBlogName$></a><span class="date"> - Posted date: <$MTEntryDate$></span></li>
+            </ul></dd>
+	</MTActionsEntry>
+	<MTActionsComment>
+            <dt class="comment icon-comment"> <MTCommentEntry><a href="<$MTEntryPermalink$>#comment-<$MTCommentID$>" title="<__trans phrase="[_1] Comments" params='<$MTEntryTitle$>'>:<$MTCommentDate$>"><$MTEntryTitle encode_html="1"$></a></MTCommentEntry></dt>
+            <dd><ul>
+              <li class="textBody"><$MTCommentBody words="40"$>...</li>
+              <li>Posted date: <$MTCommentDate$></li>
+            </ul></dd>
+	</MTActionsComment>
+	<MTActionsFavorite>
+            <dt class="score icon-score"><__trans phrase="Favorited [_1] on <a href="<$MTEntryBlogURL$>" class="icon-blog">[_2]</a>" params='<a href="<$MTEntryLink$>"><$MTEntryTitle encode_html="1"$></a>%%<$MTEntryBlogName$>'></dt>
+	</MTActionsFavorite>
+	<MTActionsFooter>
+          </dl>
+	</mt:ActionsFooter>
+<MTElse>
+          <p><__trans phrase="No recent actions."></p>
+</MTActions>
+        </div>
+
+        <div id="profile-comment-threads" class="section">
+          <h2 class="tab_content_label"><__trans phrase="Comment Threads"></h2>
+<MTAuthorCommentResponses lastn="5" sort_order="descend">
+	<MTCommentsHeader>
+          <dl class="headline">
+	</MTCommentsHeader>
+	<MTSetVarBlock name="comment_user_link">
+		<MTIfCommenterIsAuthor>
+			<a href="<$MTGetVar name="profile_view_url"$><$MTCommenterID$>"><$MTCommenterName$></a>
+		<MTElse>
+			<$MTCommentAuthorLink$>
+		</MTIfCommenterIsAuthor>
+	</MTSetVarBlock>
+            <dt class="comment icon-comment"><$MTGetVar name="comment_user_link"$><__trans phrase="commented on">: 
+		<MTCommentEntry><a href="<$MTEntryPermalink$>#comment-<$MTCommentID$>" title="<__trans phrase="[_1] Comments" params='<$MTEntryTitle$>'>:<$MTCommentDate$>"><$MTEntryTitle encode_html="1"$></a></MTCommentEntry>
+            </dt>
+            <dd><ul>
+              <li class="textBody"><$MTCommentBody remove_html="1" words="100"$>...</li>
+              <li>Posted date: <$MTCommentDate$></li>
+            </ul></dd>
+	<MTCommentsFooter>
+          </dl>
+	</MTCommentsFooter>
+<MTElse>
+          <p class="note"><__trans phrase="No responses to comments."></p>
+</MTAuthorCommentResponses>
+        </div>
+
+      </div>
+<!-- end div.entry -->
+
+<$MTInclude module="<__trans phrase="Topic Path">"$>
+    </div>
+<!-- end div#main -->
+
+    <div id="utilities">
+      <dl class="navi">
+<$MTWidgetSet name="<__trans phrase="Navigation Utilities">"$>
+
+        <dt class="widget-header"><__trans phrase="Following"></dt>
+        <dd class="widget-content">
+<MTAuthorFollowing>
+	<MTIf name="__first__">
+          <ul class="user-listing">
+	</MTIf>
+            <li class="pkg">
+	<$MTInclude module="<__trans phrase="Userpic">" userpic_size="36" userpic_type="userlist"$>
+ <a href="<$MTGetVar name="profile_view_url"$><$MTAuthorID$>" class="user-name"><$MTAuthorDisplayName$></a>
+	<MTIf tag="AuthorURL">: <a href="<$MTAuthorURL$>" title="<$MTAuthorURL encode_html="1"$>">WebSite</a></MTIf>
+            </li>
+	<MTIf name="__last__">
+          </ul>
+	</MTIf>
+<MTElse>
+          <p class="note"><__trans phrase="Not following anyone"></p>
+</MTAuthorFollowing>
+        </dd>
+
+<MTif name="profile_self">
+        <dt class="widget-header"><__trans phrase="Followers"></dt>
+        <dd class="widget-content">
+	<MTAuthorFollowers>
+		<MTIf name="__first__">
+          <ul class="user-listing">
+		</MTIf>
+            <li class="pkg">
+		<$MTInclude module="<__trans phrase="Userpic">" userpic_size="36" userpic_type="userlist"$>
+ <a href="<$MTGetVar name="profile_view_url"$><$MTAuthorID$>" class="user-name"><$MTAuthorDisplayName$></a>
+		<MTIf tag="AuthorURL">: <a href="<$MTAuthorURL$>" title="<$MTAuthorURL encode_html="1"$>">WebSite</a></MTIf>
+            </li>
+		<MTIf name="__last__">
+          </ul>
+		</MTIf>
+	<MTElse>
+          <p class="note"><__trans phrase="Not being followed"></p>
+	</MTAuthorFollowers>
+        </dd>
+</MTIf>
+
+      </dl>
+<!--end navi-->
+
+      <dl class="others">
+	<$MTWidgetSet name="<__trans phrase="Other Utilities">"$>
+      </dl>
+<!--end others-->
+
+    </div>
+<!--end utilities-->
+
+<$MTInclude module="<__trans phrase="Return to page top">"$>
+  </div>
+<!-- end div#content -->
+
+<$MTInclude module="<__trans phrase="Footer">"$>
+</body>
+</html>

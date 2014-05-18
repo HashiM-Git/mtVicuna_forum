@@ -1,0 +1,24 @@
+<MTIf tag="BlogCommentCount">
+	<MTComments lastn="10" sort_order="descend">
+		<MTCommentsHeader>
+<dt><__trans phrase="Recent Comments"></dt>
+<dd class="recentComments">
+  <ul>
+		</MTCommentsHeader>
+		<MTSetVarBlock name="comment_user_link">
+			<MTIfCommenterIsAuthor>
+				<a href="<$MTGetVar name="profile_view_url"$><$MTCommenterID$>"><$MTCommenterName$></a>
+			<MTElse>
+				<$MTCommentAuthorLink$>
+			</MTIfCommenterIsAuthor>
+		</MTSetVarBlock>
+    <li class="rc-user<MTIf name="__odd__"> odd<MTElse> even</MTIf>"><$MTGetVar name="comment_user_link"$>
+      <ul><li class="rc-entry icon-entry"><MTCommentEntry><a href="<$MTEntryPermaLink$>"><$MTEntryTitle$></a></MTCommentEntry></li>
+      <li class="rc-body icon-comment"><a href="<$MTCommentLink$>"><$MTCommentBody remove_html="1" trim_to="18+..."$></a></li></ul>
+    </li>
+		<MTCommentsFooter>
+  </ul>
+</dd>
+		</MTCommentsFooter>
+	</MTComments>
+</MTIf>

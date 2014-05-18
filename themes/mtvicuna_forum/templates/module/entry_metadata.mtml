@@ -1,0 +1,20 @@
+<ul class="info">
+<MTIfNonEmpty tag="EntryAuthorDisplayName">
+  <li class="author"><$MTInclude module="<__trans phrase="Userpic">" userpic_size="50"$>
+    <span class="vcard author"><a href="<$MTGetVar name="profile_view_url"$><$MTEntryAuthorID$>"><$MTEntryAuthorDisplayName encode_html="1"$></a></span>
+  </li>
+</MTIfNonEmpty>
+  <li class="date"><$MTEntryDate$></li>
+<MTIfNonEmpty tag="MTEntryCategory">
+  <li class="category">
+	<MTEntryCategories glue=" | "><a href="<$MTCategoryArchiveLink$>" title="<__trans phrase="Categories">:<$MTCategoryLabel$>"><$MTCategoryLabel$></a></MTEntryCategories>
+  </li>
+</MTIfNonEmpty>
+  <li class="asset-meta">
+    <a href="javascript:void(0)" onclick="return mtScore(<$MTEntryID$>)" class="scoring" id="scoring-id-<$MTEntryID$>">
+ <span id="scoring-vote-<$MTEntryID$>" class="scoring-vote"><__trans phrase="Vote"></span>
+ <span id="scoring-score-<$MTEntryID$>" class="scoring-score"><$MTEntryScore namespace="community_pack_recommend" singular="1" plural="#" none="0"$></span>
+ <span id="scoring-score-label-<$MTEntryID$>" class="scoring-score-label"><$MTEntryScore namespace="community_pack_recommend" singular="<__trans phrase="Vote">" plural="<__trans phrase="Vote">" none="<__trans phrase="Vote">"$></span>
+    </a>
+  </li>
+</ul>

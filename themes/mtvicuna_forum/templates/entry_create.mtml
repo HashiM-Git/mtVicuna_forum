@@ -1,0 +1,162 @@
+<MTSetVars>
+	tempName=new_entry
+	page_title=<__trans phrase="Start a Topic">
+	title=<$MTBlogName encode_html="1"$>: <$MTGetVar name="page_title"$>
+</MTSetVars>
+<?xml version="1.0" encoding="<$MTPublishCharset$>" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="<$MTDefaultLanguage$>" xml:lang="<$MTDefaultLanguage$>">
+<head profile="http://purl.org/net/ns/metaprof">
+<MTInclude module="<__trans phrase="HTML Header">">
+<MTIfNonEmpty tag="MTBlogDescription">  <meta name="description" content="<$MTBlogDescription encode_html="1"$>" /></MTIfNonEmpty>
+  <title><$MTGetVar name="blog_name"$> - <$MTGetVar name="page_title"$></title>
+<script type="text/javascript">
+<!-- <mt:Ignore>Pull Topic name and label from url</mt:Ignore>
+var url = document.URL;
+var cid;
+var cname;
+if (url) {
+    var query = url.substr(url.indexOf('?', 0) + 1);
+    var q = query.split(/;/);
+    if (q) {
+        cid = q[0];
+        cname = q[1];
+    }
+}
+//-->
+</script>
+</head>
+<body class="individual single">
+<$MTInclude module="<__trans phrase="Header">"$>
+
+  <div id="content">
+
+    <div id="main">
+<$MTInclude module="<__trans phrase="Topic Path">"$>
+      <h1><$MTGetVar name="page_title"$></h1>
+
+      <div class="entry">
+
+<script type="text/javascript">
+<!--
+function entry_create_loggedin() {
+    var u = mtGetUser();
+    var loggedin = u && u.is_authenticated && u.is_author ? true : false;
+    var eid = 'logged_in';
+    conditional_block(loggedin, eid);
+    if (!loggedin) {
+        var p = document.getElementById('login_message');
+        if (!p) return;
+        if (u && !u.is_author) 
+            p.innerHTML = "<__trans phrase="In order to create an entry on this blog you must first register.">";
+        else
+            if (u && !u.can_post)
+                p.innerHTML = "<__trans phrase="You don't have permission to post.">";
+            else
+                p.innerHTML = '<a href="javascript:void(0)" onclick="return mtSignInOnClick(\'login_message\')"><__trans phrase="Sign in to create an entry." escape="js"></a>';
+    } else {
+        var mt = document.getElementById('magic_token');
+        if (mt) mt.value = u.sid;
+    }
+}
+// -->
+</script>
+
+<MTIfLoggedIn script="entry_create_loggedin">
+        <form method="post" action="<$MTCGIPath$><$MTCommunityScript$>" id="create-entry-form" enctype="multipart/form-data">
+          <fieldset>
+            <legend><__trans phrase="Start Topic Form"></legend>
+            <div>
+              <input type="hidden" name="__mode" value="post" />
+              <input type="hidden" name="blog_id" value="<$MTBlogID$>" />
+              <input type="hidden" id="magic_token" name="magic_token" value="" />
+            </div>
+
+	<MTIf tag="BlogCategoryCount">
+		<MTSetVarBlock name="field_content">
+            <select id="entry-category" name="category">
+              <option value="0"><__trans phrase="Select Category..."></option>
+			<MTTopLevelCategories>
+              <optgroup label="<$MTCategoryLabel$>">
+				<MTSubCategories>
+                <option value="<$MTCategoryID$>"><$MTCategoryLabel$></option>
+				</MTSubCategories>
+              </optgroup>
+			</MTTopLevelCategories>
+            </select>
+            <span id="entry-category_label" style="display:none"></span>
+            <input id="entry-category_id" type="hidden" name="category_id" value="" />
+<script type="text/javascript">
+            <!--
+            if (cid && cname) {
+                var id = document.getElementById('entry-category_id');
+                if (id) id.value = cid;
+                var label = document.getElementById('entry-category_label');
+                if (label) {
+                    label.innerHTML = decodeURIComponent(cname);
+                    label.style.display = '';
+                }
+                var select = document.getElementById('entry-category');
+                if (select) select.style.display = 'none';
+            }
+            //-->
+</script>
+		</MTSetVarBlock>
+		<MTSetVars>
+			id=entry-category
+			label=<__trans phrase="Category">
+		</MTSetVars>
+		<$MTInclude module="<__trans phrase="Form Field">"$>
+	</MTIf>
+
+	<MTSetVars>
+		field_content=<input id="entry-title" class="ti" name="title" />
+		id=entry-title
+		label=<__trans phrase="Title">
+	</MTSetVars>
+	<$MTInclude module="<__trans phrase="Form Field">"$>
+
+	<MTSetVars>
+		field_content=<textarea id="entry-body" class="inputField" name="text" rows="15" cols="50"></textarea>
+		id=entry-body
+		label=<__trans phrase="Body">
+	</MTSetVars>
+	<$MTInclude module="<__trans phrase="Form Field">"$>
+
+	<MTEntryCustomFields>
+		<MTSetVars>
+			field_content=<$MTCustomFieldHTML$>
+			id=profile_<$MTCustomFieldName dirify="1"$>
+			label=<$MTCustomFieldName$>
+		</MTSetVars>
+		<$MTInclude module="<__trans phrase="Form Field">"$>
+	</MTEntryCustomFields>
+
+            <div class="action" id="comments-open-footer">
+              <input type="submit" accesskey="s" class="submit post" name="post" id="entry-submit" value="Submit" />
+            </div>
+          </fieldset>
+        </form>
+<MTElse>
+        <p id="login_message"></p>
+</MTIfLoggedIn>
+
+<script type="text/javascript">
+<!--
+mtAttachEvent('usersignin', entry_create_loggedin);
+//-->
+</script>
+      </div>
+
+<$MTInclude module="<__trans phrase="Topic Path">"$>
+    </div>
+<!-- end div#main -->
+
+<$MTInclude module="<__trans phrase="Utilities">"$>
+<$MTInclude module="<__trans phrase="Return to page top">"$>
+  </div>
+<!-- end div#content -->
+
+<$MTInclude module="<__trans phrase="Footer">"$>
+</body>
+</html>

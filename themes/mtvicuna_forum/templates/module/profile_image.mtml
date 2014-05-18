@@ -1,0 +1,18 @@
+<MTIf name="userpic_type" eq="profile">
+<img src="<MTIf tag="AuthorUserpicURL"><$MTAuthorUserpicURL$><MTElse><$MTGetVar name="def_Upic"$></MTIf>" width="<$MTGetVar name="userpic_size"$>" height="<$MTGetVar name="userpic_size"$>" alt="<$MTAuthorDisplayName$>'s user-pic" />
+<MTElse name="userpic_type" eq="commenter">
+	<MTIfCommenterIsAuthor><MTignore>IF NATIVE MTCS USER</MTignore>
+<a href="<$MTGetVar name="profile_view_url"$><$MTCommenterID$>"><img src="<MTIf tag="CommenterUserpic"><$MTCommenterUserpicURL$><MTElse><$MTGetVar name="def_Upic"$></MTIf>" width="<$MTGetVar name="userpic_size"$>" height="<$MTGetVar name="userpic_size"$>" alt="<$MTCommentAuthor$>'s user-pic" /></a>
+	<MTElse>
+		<MTIf tag="CommenterID"><MTIgnore>IF AUTHENTICATED USER (OPENID, VOX, LJ, ETC)</MTIgnore>
+<a href="<$MTCommenterURL$>"><img src="<MTIf tag="CommenterUserpic"><$MTCommenterUserpicURL$><MTElse><$MTGetVar name="def_Upic"$></MTIf>" width="<$MTGetVar name="userpic_size"$>" height="<$MTGetVar name="userpic_size"$>" alt="<$MTCommentAuthor$>'s user-pic" /></a>
+		<MTElse><MTIgnore>ELSE ANONYMOUS COMMENTER</MTIgnore>
+<a href="<$MTCommentURL$>"><img src="<MTIf tag="CommenterUserpic"><$MTCommenterUserpicURL$><MTElse><$MTGetVar name="def_Upic"$></MTIf>" width="<$MTGetVar name="userpic_size"$>" height="<$MTGetVar name="userpic_size"$>" alt="<$MTCommentAuthor$>'s user-pic" /></a>
+		</MTIf>
+	</MTIfCommenterIsAuthor>
+
+<MTElse name="userpic_type" eq="userlist">
+<a href="<$MTGetVar name="profile_view_url"$><$MTAuthorID$>"><img src="<MTIf tag="AuthorUserpicURL"><$MTAuthorUserpicURL$><MTElse><$MTGetVar name="def_Upic"$></MTIf>" width="<$MTGetVar name="userpic_size"$>" height="<$MTGetVar name="userpic_size"$>" alt="<$MTAuthorDisplayName$>'s user-pic" /></a>
+<MTElse>
+<a href="<$MTGetVar name="profile_view_url"$><$MTEntryAuthorID$>"><img src="<MTIf tag="EntryAuthorUserpicURL"><$MTEntryAuthorUserpicURL$><MTElse><$MTGetVar name="def_Upic"$></MTIf>" width="<$MTGetVar name="userpic_size"$>" height="<$MTGetVar name="userpic_size"$>" alt="<$MTEntryAuthorDisplayName$>'s user-pic" /></a>
+</MTIf>

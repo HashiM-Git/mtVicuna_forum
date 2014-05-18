@@ -1,0 +1,38 @@
+<MTSetVars>
+	blog_id=<$MTBlogID$>
+	blog_name=<$MTBlogName encode_html="1"$>
+	blog_url=<$MTBlogURL$>
+	def_Upic=<$MTStaticWebPath$>images/default-userpic-90.jpg
+</MTSetVars>
+<MTSetVarBlock name="profile_view_url"><$MTCGIPath$><$MTCommunityScript$>?__mode=view&amp;blog_id=<$MTBlogID$>&amp;id=</MTSetVarBlock>
+<MTIf tag="EntryCategory">
+	<MTEntryCategories>
+		<MTSetVarBlock name="query_string">?<$MTCategoryID$>;<$MTCategoryLabel escape="url"$></MTSetVarBlock>
+	</MTEntryCategories>
+<MTElse tag="CategoryLabel">
+	<MTSetVarBlock name="query_string">?<$MTCategoryID$>;<$MTCategoryLabel escape="url"$></MTSetVarBlock>
+</MTIf>
+<MTIgnore>
+	<!-- Community Solution Blog variables -->
+	<!-- The below variables are used when there a blog is in context.  -->
+</MTIgnore>
+  <meta http-equiv="Content-Type" content="text/html; charset=<$MTPublishCharset$>" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <meta http-equiv="imagetoolbar" content="no" />
+  <meta name="generator" content="<$MTProductName version="1"$>" />
+  <meta name="author" content="<$MTBlogName encode_html="1"$>" />
+  <link rel="stylesheet" href="<$MTLink template="<__trans phrase="Stylesheet">"$>" type="text/css" />
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="<$MTLink template="RSS"$>" />
+  <link rel="alternate" type="application/atom+xml" title="Atom" href="<$MTLink template="Atom"$>" />
+  <link rel="EditURI" type="application/rsd+xml" title="RSD" href="<$MTLink template="RSD"$>" />
+  <link rel="start" href="<$MTBlogURL$>" title="Home" />
+  <link rel="contents" href="<$MTLink template="<__trans phrase="Archive Index">"$>" title="<$MTBlogName encode_html="1"$> Archives" />
+  <script type="text/javascript" src="<$MTLink template="javascript"$>"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+mtAttachEvent('load', mtUpdateScores);
+mtAttachEvent('usersignin', mtUpdateScores);
+/* ]]> */
+</script>
+<$MTCCLicenseRDF$>
